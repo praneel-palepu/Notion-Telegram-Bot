@@ -1,12 +1,11 @@
 import google.generativeai as genai
 from config import GOOGLE_AI_API_KEY
 
-# Configure the Gemini API
 genai.configure(api_key=GOOGLE_AI_API_KEY)
 
 def process_with_gemini(transcript: str) -> str:
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash-8b-exp-0827')
+        model = genai.GenerativeModel('gemini-1.5-flash-exp-0827')
         
         prompt = f"""
         Analyze the following transcript and provide a concise summary, 
