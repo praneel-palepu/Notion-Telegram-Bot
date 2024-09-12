@@ -1,10 +1,8 @@
-import os
 import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 from config import TELEGRAM_BOT_TOKEN
-from audio_handler import handle_audio_message
-from transcription import transcribe_audio
+from transcription import transcribe_audio, handle_audio_message
 from gemini import process_with_gemini
 from notion import update_notion_document
 
@@ -44,7 +42,7 @@ async def handle_audio(update: Update, context):
         logger.error(f"Error processing audio: {str(e)}")
         # Edit the processing message with the error message
         await processing_message.edit_text(
-            f"⚠️ **Oops! An error occurred.** 😞\n\nWe couldn't process your audio. Please try again later. If the problem persists, contact support. 🙏" 
+            "⚠️ **Oops! An error occurred.** 😞\n\nWe couldn't process your audio. Please try again later. If the problem persists, contact support. 🙏" 
         )
 
 def main():
